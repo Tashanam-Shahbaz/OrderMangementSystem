@@ -38,13 +38,22 @@ namespace ORM_MVVM.ModelView
                 else if (action == "2")
                 {
                     ItemsViewModel.ViewItems();
-                    
+
                     int id = Convert.ToInt32(Validation.GetNonEmptyInput("Id"));
-                    Console.WriteLine("Enter Column name:");
+                    Console.WriteLine("\nSelect Column for change" +
+                        "\n1. Name" +
+                        "\n2. Description" +
+                        "\n3. Price" +
+                        "\n4. Author" +
+                        "\n5. Size" +
+                        "\n5. Material" +
+                        "\n7. Brand"
+                        );
                     string coulmnName = Console.ReadLine();
-                    Console.WriteLine("Enter new Value:");
+                    Console.WriteLine("Enter new Value.");
+
                     string newValue = Console.ReadLine();
-                    ItemsViewModel.UpdateItem(id, coulmnName, newValue);
+                    Console.WriteLine(ItemsViewModel.UpdateItem(id, coulmnName, newValue));
                 }
                 else if (action == "3")
                 {
@@ -63,12 +72,12 @@ namespace ORM_MVVM.ModelView
                 {
                     ItemsViewModel.ViewItems();
                     Console.WriteLine("Choose an Id:");
-                    int id = Convert.ToInt32(Console.ReadLine());
+                    int id = Validation.GetValidInput<int>("ID");
                     ItemsViewModel.RemoveItem(id);
                 }
                 else if (action == "5")
                 {
-                    
+
 
                     OrderViewModel.ViewOrders();
                 }
@@ -77,6 +86,10 @@ namespace ORM_MVVM.ModelView
 
                     OrderViewModel.ViewOrders();
                     Console.WriteLine(OrderViewModel.UpdateOrder());
+                }
+                else if (action == "7")
+                {
+                    return;
                 }
                 else
                 {
@@ -96,7 +109,7 @@ namespace ORM_MVVM.ModelView
                     "\n2. Place Order" +
                     "\n3. Update Order" +
                     "\n4. View Order" +
-                    "\n6. Exit from Admin Dashboard");
+                    "\n5. Exit from Customer Dashboard");
                 string action = Console.ReadLine();
 
                 if (action == "1")
@@ -115,7 +128,11 @@ namespace ORM_MVVM.ModelView
                 {
                     OrderViewModel.ViewOrders(customerid);
                 }
-                else{
+                else if (action == "5") 
+                {
+                    return;
+                }
+                else {
                     Console.WriteLine("Invalid option");
                 }
 

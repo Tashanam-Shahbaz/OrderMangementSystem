@@ -96,29 +96,46 @@ namespace ORM_MVVM.ModelView
                 return result;
             }
 
-
         // cannot override the updata method.
         public string UpdateItem(int itemid, string itemtype, string value)
         {
             List<Items> items = Serialization.DeSerializeItemList();
-            
+            string msg = "";
+
             int index = items.FindIndex(item => item.Id == itemid);
 
-            switch (itemtype?.Replace(" ","").ToLower())
+            if (index == -1)
             {
-                case "name":
+                return "Item with given ID not found.";
+            }
+
+            switch (itemtype?.Replace(" ", "").ToLower())
+            {
+                case "1":
+                    msg += $"Updating Name for Item ID {itemid}...";
                     items[index].Name = value;
                     break;
 
-                case "description":
+                case "2":
+                    msg += $"Updating Description for Item ID {itemid}...";
                     items[index].Description = value;
                     break;
 
-                case "price":
-                    items[index].Price = float.Parse(value);
+                case "3":
+                    msg += $"Updating Price for Item ID {itemid}...";
+                    float newPrice;
+                    if (float.TryParse(value, out newPrice))
+                    {
+                        items[index].Price = newPrice;
+                    }
+                    else
+                    {
+                        return "Invalid price format. Please enter a valid number.";
+                    }
                     break;
 
-                case "author":   
+                case "4":
+                    msg += $"Updating Author for Item ID {itemid}...";
                     if (items[index] is ItemBook bookItem)
                     {
                         bookItem.Author = value;
@@ -126,23 +143,33 @@ namespace ORM_MVVM.ModelView
                     }
                     else
                     {
-                        return "You cannot change the author filed for this ID.";
+                        return "You cannot change the author field for this ID.";
                     }
                     break;
 
-                case "size":   
-                    if (items[index] is ItemCloth itemCloth)
+                case "5":
+                    msg += $"Updating Size for Item ID {itemid}...";
+                    int newSize;
+                    if (int.TryParse(value, out newSize))
                     {
-                        itemCloth.Size =Convert.ToInt32(value);
-                        items[index] = itemCloth;
+                        if (items[index] is ItemCloth itemCloth)
+                        {
+                            itemCloth.Size = newSize;
+                            items[index] = itemCloth;
+                        }
+                        else
+                        {
+                            return "You cannot change the size field for this ID.";
+                        }
                     }
                     else
                     {
-                        return "You cannot change the size field for this ID.";
+                        return "Invalid size format. Please enter a valid number.";
                     }
-                break;
+                    break;
 
-                case "material":
+                case "6":
+                    msg += $"Updating Material for Item ID {itemid}...";
                     if (items[index] is ItemCloth itemCloth1)
                     {
                         itemCloth1.Material = value;
@@ -150,42 +177,37 @@ namespace ORM_MVVM.ModelView
                     }
                     else
                     {
-                        return "You cannot change the size field for this ID.";
+                        return "You cannot change the material field for this ID.";
                     }
                     break;
 
-                case "brand":   
-
-                if (items[index] is ItemElectronic ItemElectronic)
-                {
-                        if (value == "sony")
+                case "7":
+                    msg += $"Updating Brand for Item ID {itemid}...";
+                    if (items[index] is ItemElectronic itemElectronic)
+                    {
+                        if (Enum.TryParse<Brand>(value, true, out Brand brandValue))
                         {
-                           ItemElectronic.Brand = Brand.sony;
+                            itemElectronic.Brand = brandValue;
+                            items[index] = itemElectronic;
                         }
-                        else if (value == "lg")
+                        else
                         {
-                           ItemElectronic.Brand = Brand.lg;
+                            return "Invalid brand. Please provide a valid brand value.";
                         }
-                        else if (value == "samsung")
-                        {
-                           ItemElectronic.Brand = Brand.samsung;
-                        }
-
-                    items[index] = ItemElectronic;
-                }
-                else
-                {
-                    return "You cannot change the material field for this ID.";
-                }
-                break;
+                    }
+                    else
+                    {
+                        return "You cannot change the brand field for this ID.";
+                    }
+                    break;
 
                 default:
-                    return "Please provide the valid item type.";
+                    return "Please provide a valid item type.";
             }
 
-            Serialization.SerializeItemList(items);
-            return "";
-
+            bool ser = Serialization.SerializeItemList(items);
+            msg = ser ? msg : "Serialization could not be done successfully";
+            return msg;
         }
 
         public void ViewItems()
