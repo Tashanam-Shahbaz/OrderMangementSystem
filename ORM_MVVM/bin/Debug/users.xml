@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User xsi:type="Admin">
+    <Username>admin</Username>
+    <Password>admin</Password>
+    <Email>admin</Email>
+    <Age>1</Age>
+    <AdminRole>add,update</AdminRole>
+    <Department>Operation</Department>
+  </User>
+  <User xsi:type="Customer">
+    <Password>tash</Password>
+    <Email>tash</Email>
+    <Age>435</Age>
+    <CustomerType>regular</CustomerType>
+    <CustomerID>1</CustomerID>
+  </User>
+  <User xsi:type="Customer">
+    <Password>irtiza@</Password>
+    <Email>irtiza@</Email>
+    <Age>89</Age>
+    <CustomerType>premium</CustomerType>
+    <CustomerID>2</CustomerID>
+  </User>
+</ArrayOfUser>
