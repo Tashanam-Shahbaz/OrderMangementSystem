@@ -1,0 +1,7 @@
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\bin\Debug\ORM_MVVM.exe.config
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\bin\Debug\ORM_MVVM.exe
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\bin\Debug\ORM_MVVM.pdb
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\obj\Debug\ORM_MVVM.csproj.AssemblyReference.cache
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\obj\Debug\ORM_MVVM.csproj.CoreCompileInputs.cache
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\obj\Debug\ORM_MVVM.exe
+C:\Users\tshahbaz\source\repos\ORM_MVVM\ORM_MVVM\obj\Debug\ORM_MVVM.pdb
