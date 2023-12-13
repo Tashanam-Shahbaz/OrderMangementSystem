@@ -11,17 +11,13 @@ The Order Management System (OMS) is a software application designed to streamli
 - **Reporting:** Generate reports to analyze sales, inventory, and order trends.
 
 ## Technologies Used
-- **Programming Language:** [Specify language(s) used, e.g., Python, Java]
-- **Frameworks/Libraries:** [List any frameworks or libraries utilized]
-- **Database:** [Specify the database system, e.g., MySQL, PostgreSQL]
-- **Other Tools:** [Mention any other tools or technologies integrated, e.g., RESTful APIs]
+- **Programming Language:** C# 
+- **Frameworks/Libraries:** .NET Framework
+- **Data Storage:** XML
 
 ## Installation
-1. **Clone the Repository:**
+ **Clone the Repository:**
 - git clone https://github.com/your-username/order-management-system.git
-
-2. ## License
-This project is licensed under the [License Name] - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 For any inquiries or support regarding the Order Management System, please contact tashanamshahbaz72@gmail.com
