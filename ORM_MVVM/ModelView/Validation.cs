@@ -27,18 +27,36 @@ namespace ORM_MVVM.ModelView
             return userInput;
         }
 
-        //public static int GetValidInteger(string filedName)
-        //{
-        //    string integer1 = GetNonEmptyInput(filedName);
-        //    int integer2;
+        public static T GetValidInput<T>(string fieldName) where T : struct
+        {
+            while (true)
+            {
+                string input = GetNonEmptyInput(fieldName);
+                T value;
 
-        //    try
-        //    {   
-        //    }
-        //    catch
-        //    { 
-        //    }
-        //}
+                if (typeof(T) == typeof(int) && int.TryParse(input, out var intValue))
+                {
+                    value = (T)(object)intValue;
+                    return value;
+                }
+                else if (typeof(T) == typeof(float) && float.TryParse(input, out var floatValue))
+                {
+                    value = (T)(object)floatValue;
+                    return value;
+                }
+                else if (typeof(T) == typeof(decimal) && decimal.TryParse(input, out var decimalValue))
+                {
+                    value = (T)(object)decimalValue;
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"The input for {fieldName} is not a valid {typeof(T).Name.ToLower()}.");
+                }
+            }
+        }
+
+
         public static int GetValidAge(string fieldName)
         {
             int age = 0;
